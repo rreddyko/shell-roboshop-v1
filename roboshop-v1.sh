@@ -57,4 +57,5 @@ do
                 }
             ]
         }' 
+        echo " updated route53 record for $instance"
 done    
