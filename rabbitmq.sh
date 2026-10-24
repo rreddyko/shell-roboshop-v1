@@ -27,7 +27,7 @@ validate (){
 cp rabbitmq.repo /etc/yum.repos.d/rabbitmq.repo
 validate $? "repo of rabbit mq added"
 
-dnf install erlang -y &>> $logs_file
+dnf install erlang rabbitmq-server -y &>> $logs_file
 validate $? "RabbitMQ installation"
 
 systemctl enable rabbitmq-server &>> $logs_file
