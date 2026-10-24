@@ -21,6 +21,7 @@ validate (){
        exit 1
     else
         echo -e "$(timestamp) INFO ${2} SUCCESS" | tee -a $logs_file  
+    fi
 }
 
 echo " $(timestamp) script started " | tee -a $logs_file
