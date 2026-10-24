@@ -42,7 +42,8 @@ else
 fi
 
 rm -rf /app
-validate $? ""removing old code"
+validate $? "removing old code"
+
 mkdir -p /app
 validate $? "creating app directory"
 
