@@ -72,7 +72,7 @@ validate $? "Adding mongo repo"
 dnf install mongodb-mongosh -y &>> $logs_file
 validate $? "installing mongodb client"
 
-product_count=$(mongosh --host "mongodb.$domain_name" --quiet 'db.getSiblingDB("catalogue").products.countDocuments()' 2>> $logs_file)
+product_count=$(mongosh --host "mongodb.$domain_name" --quiet --eval 'db.getSiblingDB("catalogue").products.countDocuments()' 2>> $logs_file)
 validate $? "Connecting to MongoDB and getting the total number of count"
 
 if [ "product_count" -eq 0 ]; then
