@@ -3,6 +3,8 @@
 user_id=$(id -u)
 logs_folder="/var/log/roboshop"
 logs_file="${logs_folder}/${0}.log"
+domain_name="rameshkotha572.online"
+script_dir=$(dirname "$(realpath "$0")")
 
 if [ $user_id -ne 0 ]; then
     echo " run with sudo access"
@@ -52,9 +54,9 @@ validate $? "unzipping catalog zip"
 npm install &>> $logs_file
 validate $? "installing nodejs dependencies"
 
-sed -i 's/DOMAIN_NAME/$domain_name/g' catalog.service
+sed -i 's/DOMAIN_NAME/$domain_name/g' $script_dir/catalog.service
 
-cp catalog.service /etc/systemd/system/catalog.service
+cp $script_dir/catalog.service /etc/systemd/system/catalog.service
 
 systemctl daemon-reload &>> $logs_file
 systemctl enable catalog &>> $logs_file
