@@ -57,7 +57,7 @@ validate $? "unzipping catalog zip"
 npm install &>> $logs_file
 validate $? "installing nodejs dependencies"
 
-#sed -i "s/DOMAIN_NAME/${domain_name}/g" "$script_dir/catalog.service"
+sed -i "s/DOMAIN_NAME/${domain_name}/g" "$script_dir/catalog.service"
 
 cp $script_dir/catalog.service /etc/systemd/system/catalog.service
 
