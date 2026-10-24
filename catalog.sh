@@ -41,6 +41,8 @@ else
     echo " system user already exists "
 fi
 
+rm -rf /app
+validate $? ""removing old code"
 mkdir -p /app
 validate $? "creating app directory"
 
