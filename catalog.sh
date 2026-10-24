@@ -82,5 +82,8 @@ else
   echo -e " $(timestamp) products are already loaded"
 fi
 
+systemctl restart catalog
+validate $? "restarting catalog" | tee -a $logs_file
+
 echo " $(timestamp) INFO script completed in $SECONDS seconds)"
 echo " $(timestamp) INFO script completed execution" | tee -a $logs_file
