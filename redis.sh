@@ -20,10 +20,10 @@ validate (){
        echo -e "$(timestamp) ERROR ${2} FAILED " | tee -a $logs_file
        exit 1
     else
-        echo -e "$(timestamp) INFO ${2} SUCCESS" | TEE -a $logs_file  
+        echo -e "$(timestamp) INFO ${2} SUCCESS" | tee -a $logs_file  
 }
 
-echo " $(timestamp) scrip started " | tee -a $logs_file
+echo " $(timestamp) script started " | tee -a $logs_file
 
     dnf module disable redis -y &>> $logs_file
     dnf module enable redis:7 -y &>> $logs_file
