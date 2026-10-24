@@ -27,7 +27,7 @@ do
             --query 'Reservations[0].Instances[0].PrivateIpAddress' \
             --output text
     )
-    r53_record= "$instance.$domain_name"     
+    r53_record= "${instance}.${domain_name}"     
     else [ $instance_id == "frontend" ]; 
     IP=$( aws ec2 describe-instaces \
             --instance-ids $instance_id \
