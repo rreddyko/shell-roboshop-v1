@@ -21,14 +21,14 @@ do
 
     echo " $instance ID: $instance_id"
 
-    if [ $instance_id != "frontend" ]; then
+    if [ $instance != "frontend" ]; then
     IP=$( aws ec2 describe-instances \
             --instance-ids $instance_id \
             --query 'Reservations[0].Instances[0].PrivateIpAddress' \
             --output text
     )
     r53_record= "${instance}.${domain_name}"     
-    else [ $instance_id == "frontend" ]; 
+    else 
     IP=$( aws ec2 describe-instaces \
             --instance-ids $instance_id \
             --query 'Reservations[0].Instances[0].PublicIpAddress' \
