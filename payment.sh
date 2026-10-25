@@ -1,6 +1,6 @@
 #! /bin/bash
 
-user_id=$(id-u)
+user_id=$(id -u)
 logs_folder="/var/log/roboshop"
 logs_file="${logs_folder}/${0}.log"
 domain_name="rameshkotha572.online"
