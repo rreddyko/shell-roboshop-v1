@@ -37,7 +37,7 @@ validate $? "Enable and start rabbitmq-server"
 rabbitmqctl list_users | grep -qw "roboshop"
 
 if [ $? -ne 0 ]; then
-rabbitmqctl add_user roboshop Roboshop@1 &>> $logs_file
+rabbitmqctl add_user roboshop roboshop123 &>> $logs_file
 
 else
     echo -e " RabbitMQ user already exists "
