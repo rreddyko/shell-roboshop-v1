@@ -59,10 +59,10 @@ validate $? "downloading shipping data"
 
 cd /app
 
-unzip /tmp/shipping.zip
+unzip /tmp/shipping.zip &>> $logs_file
 validate $? "unzipping shipping"
 
-mvn clean package
+mvn clean package &>> $logs_file
 validate $? "creating maven package"
 
 mv target/shipping.jar shipping.jar
