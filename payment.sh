@@ -46,7 +46,7 @@ validate $? "removing old dir"
 mkdir -p /app
 validate $? "creating new app dir"
 
-curl -L -o /tmp/payment.zip "creating app"https://raw.githubusercontent.com/daws-92s/roboshop-documentation/refs/heads/main/artifacts/payment-v4.zip &>> $logs_file
+curl -L -o /tmp/payment.zip https://raw.githubusercontent.com/daws-92s/roboshop-documentation/refs/heads/main/artifacts/payment-v4.zip &>> $logs_file
 
 cd /app
 
