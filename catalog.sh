@@ -47,24 +47,24 @@ validate $? "removing old code"
 mkdir -p /app
 validate $? "creating app directory"
 
-curl -L -o /tmp/catalogue.zip https://raw.githubusercontent.com/daws-92s/roboshop-documentation/refs/heads/main/artifacts/catalogueue-v4.zip
-validate $? "downloading catalogue zip"
+curl -L -o /tmp/catalog.zip https://raw.githubusercontent.com/daws-92s/roboshop-documentation/refs/heads/main/artifacts/catalogue-v4.zip
+validate $? "downloading catalog zip"
 
 cd /app
-unzip /tmp/catalogue.zip &>> $logs_file
-validate $? "unzipping catalogue zip"
+unzip /tmp/catalog.zip &>> $logs_file
+validate $? "unzipping catalog zip"
 
 npm install &>> $logs_file
 validate $? "installing nodejs dependencies"
 
-sed -i "s/DOMAIN_NAME/${domain_name}/g" "$script_dir/catalogue.service"
+sed -i "s/DOMAIN_NAME/${domain_name}/g" "$script_dir/catalog.service"
 
-cp $script_dir/catalogue.service /etc/systemd/system/catalogue.service
+cp $script_dir/catalog.service /etc/systemd/system/catalog.service
 
 systemctl daemon-reload &>> $logs_file
-systemctl enable catalogue &>> $logs_file
-systemctl start catalogue &>> $logs_file
-validate $? "enable and start catalogue service"
+systemctl enable catalog &>> $logs_file
+systemctl start catalog &>> $logs_file
+validate $? "enable and start catalog service"
 
 cp $script_dir/mongo.repo /etc/yum.repos.d/mongo.repo
 validate $? "Adding mongo repo"
@@ -72,18 +72,18 @@ validate $? "Adding mongo repo"
 dnf install mongodb-mongosh -y &>> $logs_file
 validate $? "installing mongodb client"
 
-product_count=$(mongosh --host "mongodb.$domain_name" --quiet --eval 'db.getSiblingDB("catalogueue").products.countDocuments()' 2>> $logs_file)
+product_count=$(mongosh --host "mongodb.$domain_name" --quiet --eval 'db.getSiblingDB("catalogue").products.countDocuments()' 2>> $logs_file)
 validate $? "Connecting to MongoDB and getting the total number of count"
 
 if [ "$product_count" -eq 0 ]; then
 mongosh --host "mongodb.$domain_name" < /app/db/master-data.js
-validate $? "loading catalogue data"
+validate $? "loading catalog data"
 else
   echo -e " $(timestamp) products are already loaded"
 fi
 
-systemctl restart catalogue
-validate $? "restarting catalogue" | tee -a $logs_file
+systemctl restart catalog
+validate $? "restarting catalog" | tee -a $logs_file
 
 echo " $(timestamp) INFO script completed in $SECONDS seconds)"
 echo " $(timestamp) INFO script completed execution" | tee -a $logs_file
