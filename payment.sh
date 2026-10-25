@@ -61,7 +61,7 @@ validate $? "installing dependecies"
 
 sed -i "s/DOMAIN_NAME/$domain_name/g" "$script_dir/payment.service"
 
-cp "$scripts_dir/payment.service" /etc/systemd/system/payment.service
+cp "$script_dir/payment.service" /etc/systemd/system/payment.service
 
 systemctl daemon-reload &>> $logs_file
 systemctl enable payment &>> $logs_file
