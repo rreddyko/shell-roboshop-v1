@@ -51,7 +51,7 @@ fi
 rm -rf /app &>> $logs_file
 validate $? "removing old files"
 
-mkdir -p /app  $logs_file
+mkdir -p /app &>> $logs_file
 validate $? "creating new dir"
 
 curl -L -o /tmp/shipping.zip https://raw.githubusercontent.com/daws-92s/roboshop-documentation/refs/heads/main/artifacts/shipping-v4.zip &>>$logs_file
