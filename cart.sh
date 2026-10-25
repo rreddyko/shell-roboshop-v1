@@ -62,7 +62,7 @@ systemctl daemon-reload &>>$logs_file
 systemctl enable cart  &>>$logs_file
 systemctl start cart  &>>$logs_file
 
-vaidate $? "enabling and starting cart"
+validate $? "enabling and starting cart"
 
 systemctl restart cart
 validate $? "reststarting cart"
