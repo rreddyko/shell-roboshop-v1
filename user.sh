@@ -18,7 +18,7 @@ timestamp(){
 }
 
 validate(){
-    if [ $1 -ne 0]; then
+    if [ $1 -ne 0 ]; then
     echo -e "$(timestamp) FAILED" | tee -a $logs_file
     else
     echo -e "$(timestamp) SUCCESS" | tee -a $logs_file
