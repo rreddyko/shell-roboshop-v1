@@ -63,7 +63,7 @@ sed -i "s/DOMAIN_NAME/$domain_name/g" "$script_dir/user.service"
 
 cp "$script_dir/user.service" /etc/systemd/system/user.service
 
-systemctl daemon reload  &>>$logs_file
+systemctl daemon-reload  &>>$logs_file
 systemctl enable user &>>$logs_file
 systemctl start user &>>$logs_file
 validate $? "enabling and starting user"
