@@ -29,7 +29,7 @@ validate (){
 echo " $(timestamp) script started "
 
 dnf module disable nodejs -y &>>$logs_file
-dnf module enable nodejs:24 -y 
+dnf module enable nodejs:24 -y  &>>$logs_file
 dnf install nodejs -y &>>$logs_file
 validate $? "installing nodejs"
 
@@ -50,7 +50,7 @@ validate $? "creating a directory for app"
 curl -L -o /tmp/cart.zip https://raw.githubusercontent.com/daws-92s/roboshop-documentation/refs/heads/main/artifacts/cart-v4.zip &>>$logs_file
 validate $? "downloading cart details provided by developer"
 cd /app
-unzip /tmp/cart/zip &>> $logs_file
+unzip /tmp/cart.zip &>> $logs_file
 
 npm install &>> $logs_file
 validate $? "installing dependecies"
