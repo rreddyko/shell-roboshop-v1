@@ -1,12 +1,12 @@
 [Unit]
-Description=Catalog Service
+Description=catalogue Service
 After=network-online.target
 
 [Service]
 User=roboshop
-Environment=MONGO_URL="mongodb://mongodb.DOMAIN_NAME/catalog"
+Environment=MONGO_URL="mongodb://mongodb.DOMAIN_NAME/catalogue"
 ExecStart=/bin/node /app/server.js
-SyslogIdentifier=catalog
+SyslogIdentifier=catalogue
 Restart=on-failure
 RestartSec=5
 
