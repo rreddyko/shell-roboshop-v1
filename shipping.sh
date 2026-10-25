@@ -89,8 +89,13 @@ validate $? "creating appuser i.e For shipping to access database for countries 
 systemctl daemon-reload &>> $logs_file
 systemctl enable shipping &>> $logs_file
 systemctl start shipping &>> $logs_file
+validate $? "starting and enabling shipping"
+
 systemctl restart shipping &>> $logs_file
 validate $? " restart shipping service"
+
+echo "$(timestamp) script completed in $SECONDS seconds"
+echo "$(timestamp)==========SCRIPT COMPLETED======='
 
 
 
