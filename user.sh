@@ -19,9 +19,9 @@ timestamp(){
 
 validate(){
     if [ $1 -ne 0 ]; then
-    echo -e "$(timestamp) FAILED" | tee -a $logs_file
+    echo -e "$(timestamp) ${2} FAILED" | tee -a $logs_file
     else
-    echo -e "$(timestamp) SUCCESS" | tee -a $logs_file
+    echo -e "$(timestamp) ${2} SUCCESS" | tee -a $logs_file
     fi
 }
 
@@ -48,7 +48,8 @@ mkdir -p /app
 validate $? "creating app directory"
 
 curl -L -o /tmp/user.zip https://raw.githubusercontent.com/daws-92s/roboshop-documentation/refs/heads/main/artifacts/user-v4.zip &>>$logs_file
-validate &? "downloading user provided by developer"
+
+validate $? "downloading user provided by developer"
 
 cd /app
 
