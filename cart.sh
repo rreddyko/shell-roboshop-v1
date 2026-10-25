@@ -4,7 +4,7 @@ user_id=$(id -u)
 logs_folder="/var/log/roboshop"
 logs_file="${logs_folder}/${0}.log"
 domain_name="rameshkotha572.online"
-script_dir=$(dir_name "$(realpath "$0")")
+script_dir=$(dirname "$(realpath "$0")")
 
 if [ $user_id -ne 0 ];then
     echo "Please run with sudo access"
