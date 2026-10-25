@@ -9,7 +9,7 @@ script_dir=$(dirname "$(realpath "$0")")
 if [ $user_id -ne 0 ]; then
     echo "please run with SUDO access"
     exit 1
-fi
+fi  
 
 mkdir -p $logs_folder
 
@@ -18,9 +18,9 @@ timestamp(){
 }
 validate(){
     if [ $1 -ne 0 ]; then
-        echo -e "$(timestamp) ${2} failed " | tee -a &>>$logs_file
+        echo -e "$(timestamp) $2 failed " | tee -a "$logs_file"
     else
-        echo -e "$(timestamp) ${2} success " | tee -a &>>$logs_file
+        echo -e "$(timestamp) $2 success " | tee -a "$logs_file"
     fi
 }
 

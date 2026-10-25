@@ -4,8 +4,8 @@ After=network-online.target
 
 [Service]
 User=roboshop
-Environment=CART_ENDPOINT=cart.$domain_name:8080
-Environment=DB_HOST=mysql-$domain_name
+Environment=CART_ENDPOINT=cart.DOMAIN_NAME:8080
+Environment=DB_HOST=mysql.DOMAIN_NAME
 Environment=DB_USER=shipping
 Environment=DB_PASSWORD=RoboShop@1
 ExecStart=/bin/java -jar /app/shipping.jar
