@@ -46,7 +46,7 @@ curl -L -o /tmp/frontend.zip https://raw.githubusercontent.com/daws-92s/roboshop
 cd /usr/share/nginx/html &>>$logs_file
 unzip /tmp/frontend.zip &>>$logs_file
 
-sed -i "s/DOMAIN_NAME/$domain_name" "$script_dir/roboshop.conf"
+sed -i "s/DOMAIN_NAME/$domain_name/g" "$script_dir/roboshop.conf"
 cp "$script_dir/roboshop.conf" /etc/nginx/default.d/roboshop.conf
 validate $? "copied roboshop conf"
 
