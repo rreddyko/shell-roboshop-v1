@@ -95,7 +95,7 @@ systemctl restart shipping &>> $logs_file
 validate $? " restart shipping service"
 
 echo "$(timestamp) script completed in $SECONDS seconds"
-echo "$(timestamp)==========SCRIPT COMPLETED======='
+echo "$(timestamp)==========SCRIPT COMPLETED======="
 
 
 
