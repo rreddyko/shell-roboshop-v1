@@ -19,7 +19,7 @@ timestamp(){
 
 validate(){
 
-    if [ $1 ne 0 ]; then
+    if [ $1 -ne 0 ]; then
         echo " $(timestamp) ${2} FAILED" | tee -a $logs_file
     else
         echo " $(timestamp) ${2} SUCCESS" | tee -a $logs_file
@@ -33,7 +33,7 @@ validate $? "Installing python 3.14"
 
 id roboshop &>> $logs_file
 
-if [ $? ne 0 ]; then
+if [ $? -ne 0 ]; then
     useradd --system --home /app --shell /sbin/nologin --comment "system user" roboshop &>> $logs_file
     validate $? "creating system user"
 else
