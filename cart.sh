@@ -59,8 +59,9 @@ sed -i "s/DOMAIN_NAME/$domain_name/g" "$script_dir/cart.service"
 cp "$script_dir/cart.service" /etc/systemd/system/cart.service
 
 systemctl daemon-reload &>>$logs_file
-systemctl enable cart 
-systemctl start cart 
+systemctl enable cart  &>>$logs_file
+systemctl start cart  &>>$logs_file
+
 vaidate $? "enabling and starting cart"
 
 systemctl restart cart
