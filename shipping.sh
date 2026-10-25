@@ -67,7 +67,7 @@ validate $? "creating maven package"
 
 mv target/shipping.jar shipping.jar
 
-sed -i "s/DOMAIN_NAME/$domain_name" "$script_dir/shipping.service"
+sed -i "s/DOMAIN_NAME/$domain_name/g" "$script_dir/shipping.service"
 
 cp "$script_dir/shipping.service" /etc/systemd/system/shipping.service
 
