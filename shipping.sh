@@ -21,6 +21,7 @@ validate(){
         echo -e "$(timestamp) ${2} failed " | tee -a &>>$logs_file
     else
         echo -e "$(timestamp) ${2} success " | tee -a &>>$logs_file
+    fi
 }
 
 echo " $(timestamp) script started execution"
