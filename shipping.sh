@@ -6,7 +6,7 @@ logs_file="${logs_folder}/${0}.log"
 domain_name="rameshkotha572.online"
 script_dir=$(dirname "$(realpath "$0")")
 
-if [ $user_is -ne 0 ]; then
+if [ $user_id -ne 0 ]; then
     echo "please run with SUDO access"
     exit 1
 fi
@@ -14,7 +14,7 @@ fi
 mkdir -p $logs_folder
 
 timestamp(){
-    date("+%F %T")
+    date "+%F %T"
 }
 validate(){
     if [ $1 -ne 0 ]; then
